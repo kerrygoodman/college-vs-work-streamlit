@@ -63,9 +63,52 @@ with st.form("add_scenario_form"):
     path_type = st.radio(
         "Path Type",
         options=["College", "Work"],
-        index=0
+        index=0,
         help="Choose 'college' if this scenario includes tuition and loans, or 'work' if you start working immediately."
     )
     
     years_in_school = st.number_input("Years in school (only for college path)", min_value=0, max_value=10, value=4)
+    tuition_per_year = st.number_input("Tuition per year (only for college path)", min_value=0, value=20000, step=1000)
     
+    loan_amount = st.number_input("Total loan amount", min_value=0, value=30000, step=1000)
+    loan_interest_rate = st.number_input("Loan interest rate (e.g., 0.05 for 5%)", min_value=0.0, max_value=1.0, value=0.05, step=0.01)
+    loan_term_years = st.number_input("Loan term in years", min_value=0, max_value=40, value=10)
+    
+    starting_salary = st.number_input("Starting Salary", min_value=0, value=60000, step=1000)
+    salary_growth_rate = st.number_input("Annual Salary Growth Rate (e.g., 0.03 for 3%)", min_value=0.0, max_value=1.0, value=0.03, step=0.01)
+    
+    monthly_expenses = st.number_input("Monthly living expenses", min_value=0, value=1500, step=100)
+    training_cost = st.number_input("Cost of any additional training or certifications", min_value=0, value=0, step=500)
+    
+    simulation_years = st.number_input("Years to simulate", min_value=1, max_value=50, value=15)
+    
+    submitted = st.form_submit_button("Save scenario")
+    
+if submitted:
+    #Creates a new row as a dict
+    new_row = {
+        "name":name,
+        "path_type": path_type,
+        "years_in_school": years_in_school,
+        "tuition_per_year": tuition_per_year,
+        "loan_amount": loan_amount,
+        "loan_interest_rate": loan_interest_rate,
+        "loan_term_years": loan_term_years,
+        "starting_salary": starting_salary,
+        "salary_growth_rate": salary_growth_rate,
+        "monthly_expenses": monthly_expenses,
+        "training_cost": training_cost,
+        "simulation_years": simulation_years,
+    }
+    
+    #Append the new row to the data frame
+    scenarios_df = pd.concat(
+        [scenarios_df, pd.DataFrame([new_row])],
+        ignore_index=True
+    )
+    
+    #Saves to CSV
+    save_scenarios(scenarios_df)
+    
+    st.success(f"Scenario '{name}' saved!")
+    st.experimental_rerun()
