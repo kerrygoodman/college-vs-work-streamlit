@@ -53,3 +53,13 @@ st.subheader("Saved Scenarios")
 st.dataframe(scenarios_df)
 
 st.write("Number of scenarios:", len(scenarios_df))
+
+st.markdown("---")
+st.subheader("Add a New Scenario")
+
+with st.form("add_scenario_form"):
+    name= st.text_input("Scenario name", value="My Scenario")
+    
+    path_type = st.radio(
+        
+    )
