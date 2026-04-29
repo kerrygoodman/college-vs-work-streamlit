@@ -51,3 +51,5 @@ scenarios_df = load_scenarios()
 
 st.subheader("Saved Scenarios")
 st.dataframe(scenarios_df)
+
+st.write("Number of scenarios:", len(scenarios_df))
