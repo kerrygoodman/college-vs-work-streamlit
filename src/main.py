@@ -29,7 +29,7 @@ def load_scenarios() -> pd.DataFrame:
             "starting_salary",
             "salary_growth_rate",
             "monthly_expenses",
-            "training_costs",
+            "training_cost",
             "simulation_years",
         ]
         return pd.DataFrame(columns=cols)
