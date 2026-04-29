@@ -10,4 +10,7 @@ DATA_DIR = BASE_DIRE / "data"
 SCENARIOS_CSV = DATA_DIR / "scenarios.csv"
 
 def ensure_data_dir():
-    DATA_DIR.
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+
+def load_scenarios():
+    ensure
