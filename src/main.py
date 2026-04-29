@@ -13,4 +13,7 @@ def ensure_data_dir():
     DATA_DIR.mkdir(parents=True, exist_ok=True)
 
 def load_scenarios():
-    ensure
+    ensure_data_dir()
+    if SCENARIOS_CSV.exsists():
+        return
+    
