@@ -44,4 +44,10 @@ def save_scenarios(df: pd.DataFrame) -> None:
 st.set_page_config(page_title= "College vs Work Simulator", page_icon=":mortar_board:")
 
 st.title("College vs Work - Scenario Manager (Starter)")
-st.write
+st.write("This is the starter view. We are just loading and displaying scenarios for now.")
+
+#Loading Scenarios
+scenarios_df = load_scenarios()
+
+st.subheader("Saved Scenarios")
+st.dataframe(scenarios_df)
