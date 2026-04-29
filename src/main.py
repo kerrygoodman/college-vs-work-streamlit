@@ -61,5 +61,8 @@ with st.form("add_scenario_form"):
     name= st.text_input("Scenario name", value="My Scenario")
     
     path_type = st.radio(
-        
+        "Path Type",
+        options=["College", "Work"],
+        index=0
+        help="Choose 'college' if this scenario includes tuition and loans, or 'work' if you start working immediately."
     )
